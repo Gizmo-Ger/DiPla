@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dienstplan Praxis Launhardt</title>
+
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="/css/index.css" />
+  </head>
+
+  <body>
+      <script>
+      (function () {
+        const isTouch =
+          window.matchMedia('(pointer: coarse)').matches;
+
+        const isTooSmall =
+          window.screen.availWidth < 1440 ||
+          window.screen.availHeight < 800;
+
+        if (isTouch || isTooSmall) {
+          document.body.innerHTML = `
+            <div style="
+              display:flex;
+              align-items:center;
+              justify-content:center;
+              min-height:100vh;
+              font-family:system-ui,-apple-system,Segoe UI,sans-serif;
+              text-align:center;
+              padding:2rem;
+            ">
+              <div>
+                <h2>Admin-Bereich nur am Desktop</h2>
+                <p>Diese Oberfläche ist nicht für Tablets oder Mobilgeräte ausgelegt.</p>
+                <p>Bitte Desktop oder Notebook verwenden.</p>
+              </div>
+            </div>
+          `;
+          throw new Error('Admin UI blocked on non-desktop device');
+        }
+      })();
+      </script>
+
+
+    <!-- ========================================================= -->
+    <!-- APP WRAPPER -->
+    <!-- ========================================================= -->
+    <div id="app">
+      <!-- ======================================================= -->
+      <!-- HEADER -->
+      <!-- ======================================================= -->
+      <header id="header" class="app-header">
+        <div class="header-left">
+          <h1 class="app-title">DiPLAunhardt</h1>
+          <div id="header-date" class="header-date"></div>
+        </div>
+
+        <div class="header-meta">
+          <span id="header-user" class="header-user"></span>
+          <button id="logout-btn" class="app-logout-btn">Abmelden</button>
+        </div>
+      </header>
+
+      <!-- ======================================================= -->
+      <!-- NOTES (Feiertage, Abwesenheiten, Notizen) -->
+      <!-- ======================================================= -->
+      <section id="notes-box" class="info-box notes-box"></section>
+
+      <!-- ======================================================= -->
+      <!-- CONTROLS -->
+      <!-- ======================================================= -->
+      <section id="controls-row" class="controls-row"></section>
+
+      <!-- ======================================================= -->
+      <!-- PLAN TABELLE -->
+      <!-- ======================================================= -->
+      <section id="plan-section" class="plan-section">
+        <div class="plan-wrapper">
+          <table id="plan-table" class="plan-table"></table>
+        </div>
+      </section>
+
+      <!-- ======================================================= -->
+      <!-- LEGEND -->
+      <!-- ======================================================= -->
+      <section id="legend-container" class="legend-container"></section>
+
+      <!-- ======================================================= -->
+      <!-- INFO PANEL (optional / derzeit ungenutzt) -->
+      <!-- ======================================================= -->
+      <section id="info-panel" class="info-section"></section>
+
+      <!-- ======================================================= -->
+      <!-- FOOTER / DIAGNOSTICS -->
+      <!-- ======================================================= -->
+      <footer id="diagnostics" class="diagnostics"></footer>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- SCRIPT BOOTSTRAP -->
+    <!-- ========================================================= -->
+
+    <script type="module" src="./js/bootstrap.js"></script>
+    <script type="module" src="./js/ui/settings-modal.js"></script>
+    <script type="module" src="./js/ui/debug.js"></script>
+  </body>
+</html>

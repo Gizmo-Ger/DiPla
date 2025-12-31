@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login – Dienstplan</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CSS ausgelagert -->
+    <link rel="stylesheet" href="/assets/css/login.css" />
+  </head>
+
+  <body>
+    <div class="login-box">
+      <h1>DiPLA Login</h1>
+
+      <div id="login-error" class="login-error" style="display: none"></div>
+
+      <form id="login-form" autocomplete="off">
+        <div class="login-row">
+          <label for="login-user">Benutzer</label>
+          <input
+            id="login-user"
+            type="text"
+            name="user"
+            required
+            autocomplete="username"
+            autocapitalize="characters"
+            style="text-transform: uppercase"
+            spellcheck="false"
+          />
+        </div>
+
+        <div class="login-row">
+          <label for="login-pass">Passwort</label>
+          <input
+            id="login-pass"
+            name="password"
+            type="password"
+            autocomplete="new-password"
+            required
+          />
+        </div>
+
+        <div class="login-actions">
+          <button id="login-btn" type="submit">Anmelden</button>
+        </div>
+      </form>
+
+      <div class="login-footer">Zugriff nur für berechtigte Nutzer</div>
+    </div>
+
+    <script>
+      const form = document.getElementById('login-form');
+      const errorBox = document.getElementById('login-error');
+      const btn = document.getElementById('login-btn');
+
+      // -------------------------------------------------
+      // Session-Timeout-Hinweis (beim Seitenaufruf)
+      // -------------------------------------------------
+      const params = new URLSearchParams(location.search);
+      if (params.get('reason') === 'timeout') {
+        errorBox.textContent = 'Session abgelaufen. Bitte erneut anmelden.';
+        errorBox.style.display = 'block';
+      }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        errorBox.style.display = 'none';
+        btn.disabled = true;
+
+        const data = new FormData(form);
+
+        try {
+          const resp = await fetch('/api/auth/login.php', {
+            method: 'POST',
+            body: data,
+          });
+
+          const result = await resp.json();
+
+          if (result.status === 'ok' && result.redirect) {
+            window.location.href = result.redirect;
+            return;
+          }
+
+          throw new Error(result.message || 'Login fehlgeschlagen');
+        } catch (err) {
+          errorBox.textContent = err.message;
+          errorBox.style.display = 'block';
+        } finally {
+          btn.disabled = false;
+        }
+      });
+    </script>
+  </body>
+</html>

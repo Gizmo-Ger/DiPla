@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dienstplan – Mitarbeiteransicht</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Auth -->
+    <script type="module" src="/js/core/auth-guard.js"></script>
+
+    <!-- Viewer Styles -->
+    <link rel="stylesheet" href="/assets/css/viewer.css" />
+  </head>
+
+  <body>
+    <div id="vw-header">
+      <div class="vw-header-left">
+        <span id="vw-username" class="vw-user"></span>
+      </div>
+
+      <div class="vw-header-right">
+        <label for="vw-month">Monat</label>
+        <select id="vw-month"></select>
+
+        <label for="vw-year">Jahr</label>
+        <select id="vw-year"></select>
+
+        <button id="vw-print-btn" class="vw-btn vw-btn-print">Drucken</button>
+        <button id="logout-btn" class="vw-btn vw-btn-logout">Abmelden</button>
+      </div>
+    </div>
+
+    <div id="vw-content"></div>
+    <div id="vw-legend"></div>
+
+    <!-- Viewer-ONLY Logic -->
+    <script type="module" src="/js/viewer.js"></script>
+  </body>
+</html>
