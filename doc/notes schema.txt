@@ -1,0 +1,42 @@
+type PlanNote = {
+  id?: string;
+  // optional, für spätere Edit/Delete-Funktionen
+
+  weekStart: string;
+  // ISO-Montag der Kalenderwoche, z.B. "2026-01-05"
+
+  text: string;
+  // Reiner Anzeigeinhalt
+  // - Persistiert IMMER ohne @
+  // - Viewer zeigt exakt diesen Text
+
+  source: 'system' | 'user';
+  // system = automatisch erzeugt (ITN, Teamsitzung, Schulferien)
+  // user   = manuell eingegeben (Admin)
+
+  visibility: 'public' | 'private';
+  // public  = alle Mitarbeiter sehen es
+  // private = nur recipients sehen es
+
+  recipients?: string[];
+  // Pflicht bei visibility='private'
+  // Mitarbeiter-IDs, z.B. ["SAL"]
+
+  author?: string;
+  // system → optional oder leer
+  // user   → IMMER setzen (Admin-Kürzel, z.B. "ADM", "SVS")
+
+  meta?: {
+    type?: 'itn' | 'teammeeting' | 'school' | 'other';
+    // Herkunft / Kategorie
+
+    locked?: boolean;
+    // true  = nicht editierbar (Systemnotes)
+    // false = editierbar (Usernotes)
+
+    generatedAt?: string;
+    // ISO-Timestamp
+    // system → gesetzt
+    // user   → gesetzt
+  };
+};
