@@ -1,0 +1,105 @@
+/* ==========================================================
+   Login – Minimal, neutral, wartbar
+   ========================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  background: #f3f4f6;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 360px;
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.login-box h1 {
+  margin: 0 0 16px;
+  font-size: 20px;
+  text-align: center;
+}
+
+/* ------------------------------------------ */
+
+.login-row {
+  margin-bottom: 14px;
+}
+
+.login-row label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 4px;
+  color: #444;
+}
+
+.login-row input {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-row input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* ------------------------------------------ */
+
+.login-error {
+  display: none;
+  color: #b91c1c;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+/* ------------------------------------------ */
+
+.login-actions {
+  margin-top: 18px;
+}
+
+.login-actions button {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background: #2563eb;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.login-actions button:disabled {
+  background: #94a3b8;
+  cursor: default;
+}
+
+/* ------------------------------------------ */
+
+.login-footer {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 12px;
+  color: #777;
+}

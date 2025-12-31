@@ -1,0 +1,490 @@
+/* =====================================================================
+   VIEWER – FINAL CONSOLIDATED CSS
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   GLOBAL
+   --------------------------------------------------------------------- */
+
+* {
+  box-sizing: border-box;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f5f5f7;
+  color: #333;
+}
+
+/* ---------------------------------------------------------------------
+   HEADER
+   --------------------------------------------------------------------- */
+
+#vw-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+
+  padding: 10px 14px;
+  background: #ffffff;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);
+  border-radius: 0 0 12px 12px;
+}
+
+.vw-header-left {
+  font-size: 14px;
+  color: #333;
+}
+
+.vw-user {
+  font-weight: 600;
+}
+
+.vw-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ---------------------------------------------------------------------
+   DROPDOWNS
+   --------------------------------------------------------------------- */
+
+#vw-header select {
+  appearance: none;
+  padding: 4px 28px 4px 6px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%23444' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+
+  font-size: 13px;
+  cursor: pointer;
+}
+
+#vw-header select:hover {
+  background-color: #fafafa;
+  border-color: rgba(0, 0, 0, 0.35);
+}
+
+#vw-header select:focus {
+  outline: none;
+  border-color: rgba(0, 0, 0, 0.55);
+}
+
+/* ---------------------------------------------------------------------
+   BUTTONS (App-kompatibel)
+   --------------------------------------------------------------------- */
+
+.vw-btn {
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #f8f9fa;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.vw-btn:hover {
+  background: #f1f3f5;
+}
+
+/* Print */
+.vw-btn-print {
+  border-color: #999;
+}
+
+/* Logout */
+.vw-btn-logout {
+  padding: 5px 12px;
+  border-radius: 6px;
+}
+
+.vw-btn-logout:hover {
+  background: #f1f3f5;
+}
+
+/* ---------------------------------------------------------------------
+   WEEK CARD
+   --------------------------------------------------------------------- */
+
+.vw-week-card {
+  background: #ffffff;
+  margin: 22px auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  width: calc(100% - 32px);
+}
+
+.vw-week-card.hover {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* ---------------------------------------------------------------------
+   WEEK HEADER
+   --------------------------------------------------------------------- */
+
+.vw-week-header {
+  background: #fafafa;
+  padding: 10px 12px;
+  font-size: 15px;
+  font-weight: 600;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* ---------------------------------------------------------------------
+   TABLE
+   --------------------------------------------------------------------- */
+
+.vw-week-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.time-label {
+  width: 48px;
+  text-align: center;
+  padding-right: 6px;
+  color: #666;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.vw-week-table th.vw-day-header {
+  text-align: center;
+  padding: 6px 0;
+  font-weight: 600;
+  font-size: 14px;
+  border-bottom: 1px solid #ddd;
+}
+
+.vw-week-table th.outside-month {
+  color: #aaa;
+}
+
+.vw-week-table td {
+  height: 24px;
+  border-bottom: 1px solid #eee;
+  border-right: 1px solid #eee;
+  padding: 0;
+}
+
+.vw-week-table td:last-child {
+  border-right: none;
+}
+
+.vw-week-table td.outside-month {
+  background: #fafafa;
+  color: #999;
+}
+
+.time-cell {
+  user-select: none;
+}
+
+/* ---------------------------------------------------------------------
+   TOOLTIP
+   --------------------------------------------------------------------- */
+
+.time-cell[data-tip] {
+  position: relative;
+}
+
+.time-cell[data-tip]:hover::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 50%;
+  top: -32px;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  background: #333;
+  color: #fff;
+  padding: 4px 7px;
+  border-radius: 6px;
+  font-size: 12px;
+  z-index: 1000;
+}
+
+.time-cell[data-tip]:hover::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -8px;
+  transform: translateX(-50%);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #333;
+}
+
+/* ---------------------------------------------------------------------
+   LEGEND
+   --------------------------------------------------------------------- */
+
+#vw-legend {
+  position: sticky;
+  bottom: 0;
+  background: #ffffff;
+  padding: 10px 12px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  border-top: 1px solid #ddd;
+  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.07);
+  font-size: 14px;
+}
+
+.vw-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vw-legend-color {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+}
+
+/* =====================================================================
+   PRINT – VIEWER (A4, Schwarz/Weiß, tintensparend)
+   ===================================================================== */
+@media print {
+  /* --------------------------------------------------
+     GLOBAL
+     -------------------------------------------------- */
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    background: #fff !important;
+    margin: 0;
+    padding: 0;
+    font-size: 10px !important;
+    color: #000;
+  }
+
+  /* --------------------------------------------------
+     HEADER – nur Name + Titel
+     -------------------------------------------------- */
+  #vw-header {
+    display: none !important;
+  }
+
+  /* Sicherheit: alle Header-Childs ebenfalls weg */
+  #vw-header * {
+    display: none !important;
+  }
+
+  /* --------------------------------------------------
+     LEGEND – NIE DRUCKEN
+     -------------------------------------------------- */
+  #vw-legend {
+    display: none !important;
+  }
+
+  /* --------------------------------------------------
+     WEEK CARD – kein Card-Design
+     -------------------------------------------------- */
+  .vw-week-card {
+    margin: 4px 0 !important;
+    padding: 0 !important;
+    border: 1px solid #000 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    width: 100% !important;
+  }
+
+  .vw-week-header {
+    background: #fff !important;
+    border-bottom: 1px solid #000 !important;
+    padding: 6px !important;
+    font-size: 11px !important;
+    font-weight: 600;
+  }
+
+  /* --------------------------------------------------
+     TABLE – kompakt, A4-freundlich
+     -------------------------------------------------- */
+  .vw-week-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    table-layout: fixed !important;
+    margin: 0 !important;
+  }
+
+  .vw-week-table th,
+  .vw-week-table td {
+    border: 1px solid #000 !important;
+    padding: 0 !important;
+  }
+
+  .time-label {
+    width: 40px !important;
+    font-size: 9px !important;
+    text-align: right;
+    padding-right: 4px !important;
+    white-space: nowrap;
+  }
+
+  .vw-week-table td {
+    height: 16px !important;
+  }
+
+  /* --------------------------------------------------
+     BELEGTE ZELLEN – GRUNDREGEL
+     (alle Rollen, s/w, nie leer)
+     -------------------------------------------------- */
+  .vw-week-table td[data-role] {
+    background: #e5e5e5 !important;
+  }
+
+  /* --------------------------------------------------
+     ABWESENHEITEN – DIAGONALE SCHRAFFUR
+     -------------------------------------------------- */
+  .vw-week-table td[data-role='Krank'],
+  .vw-week-table td[data-role='Urlaub'],
+  .vw-week-table td[data-role='Fortbildung'] {
+    background: repeating-linear-gradient(
+      45deg,
+      #000 0,
+      #000 1px,
+      transparent 1px,
+      transparent 4px
+    ) !important;
+  }
+
+  /* --------------------------------------------------
+     FEIERTAG / BRÜCKENTAG – PUNKTMUSTER
+     -------------------------------------------------- */
+  .vw-week-table td[data-role='Feiertag'],
+  .vw-week-table td[data-role='Brückentag'] {
+    background: radial-gradient(#000 15%, transparent 16%) !important;
+    background-size: 4px 4px !important;
+    background-repeat: repeat !important;
+  }
+
+  /* --------------------------------------------------
+     TAGE AUSSERHALB DES MONATS
+     -------------------------------------------------- */
+  .vw-week-table td.outside-month {
+    background: #f0f0f0 !important;
+  }
+
+  /* --------------------------------------------------
+     TOOLTIPS NIE DRUCKEN
+     -------------------------------------------------- */
+  .time-cell[data-tip]::after,
+  .time-cell[data-tip]::before {
+    display: none !important;
+  }
+}
+
+/* =====================================================================
+   PHONE ONLY – LANDSCAPE REQUIRED
+   ===================================================================== */
+
+@media (max-width: 767px) {
+  body.vw-phone-rotate::before {
+    content: 'Bitte Smartphone ins Querformat drehen, um den Dienstplan anzuzeigen.';
+    position: fixed;
+    inset: 0;
+    background: #111;
+    color: #fff;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 16px;
+    text-align: center;
+    padding: 24px;
+  }
+}
+
+/* =====================================================================
+   PHONE LANDSCAPE OPTIMIZATION
+   ===================================================================== */
+
+@media (max-width: 767px) {
+  /* Header kompakter */
+  #vw-header {
+    padding: 6px 8px;
+    gap: 10px;
+  }
+
+  .vw-header-left {
+    font-size: 12px;
+  }
+
+  .vw-header-right {
+    gap: 6px;
+  }
+
+  #vw-header select,
+  .vw-btn {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  /* Week Card enger */
+  .vw-week-card {
+    margin: 12px auto;
+    width: calc(100% - 16px);
+  }
+
+  .vw-week-header {
+    font-size: 13px;
+    padding: 6px 8px;
+  }
+
+  /* Tabelle: Slot-Höhen runter */
+  .vw-week-table td {
+    height: 20px;
+  }
+
+  .time-label {
+    width: 40px;
+    font-size: 11px;
+  }
+
+  .vw-week-table th.vw-day-header {
+    font-size: 11px;
+    padding: 4px 0;
+  }
+
+  /* Tooltip größerer Abstand */
+  .time-cell[data-tip]:hover::after {
+    font-size: 11px;
+    top: -36px;
+  }
+
+  /* Legend kompakter */
+  #vw-legend {
+    font-size: 12px;
+    padding: 6px 8px;
+    gap: 10px;
+  }
+
+  .vw-legend-color {
+    width: 12px;
+    height: 12px;
+  }
+}
