@@ -1,0 +1,51 @@
+.ui-toast {
+  position: fixed;
+  bottom: var(--space-xl);
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: max-content;
+  max-width: calc(100vw - var(--space-2xl));
+
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-base);
+
+  background: var(--bg-panel);
+  color: var(--text-primary);
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25); /* ← einziges verbleibendes Raw-Value, ok für Shadow */
+
+  opacity: 0;
+  transition: opacity 0.25s ease;
+
+  pointer-events: none;
+  z-index: var(--z-toast);
+}
+
+#toast-popup.ui-toast[data-type='success'] {
+  background: var(--status-success);
+  color: var(--text-inverse);
+}
+
+#toast-popup.ui-toast[data-type='error'] {
+  background: var(--status-danger);
+  color: var(--text-inverse);
+}
+
+#toast-popup.ui-toast[data-type='warn'] {
+  background: var(--status-warning);
+  color: var(--text-inverse);
+}
+
+#toast-popup.ui-toast[data-type='info'] {
+  background: var(--bg-panel);
+  color: var(--text-primary);
+}
+
+#toast-popup.ui-toast.visible {
+  opacity: 1;
+}

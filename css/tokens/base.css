@@ -1,0 +1,67 @@
+/* ==========================================================
+   BASE TOKENS – primitive Werte
+   ========================================================== */
+
+:root {
+  /* Colors (raw) */
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-gray-50:  #fafafa;
+  --color-gray-100: #f5f5f7;
+  --color-gray-200: #eef2f7;
+  --color-gray-300: #e0e4eb;
+  --color-gray-400: #d1d6e0;
+  --color-gray-500: #9ea4b0;
+  --color-gray-600: #6b7280;
+  --color-gray-700: #4a4e55;
+
+  --color-blue-100: #dbe4ff; /* Sehr hell / Hintergrund-Akzent */
+  --color-blue-200: #b9ccff; /* Hell / Border-Hover */
+  --color-blue-300: #8eaeff; /* Soft / Secondary Icons */
+  --color-blue-400: #648df2; /* Hellblau / Fokus-Ringe */
+  --color-blue-500: #3e6ae1; /* DEIN BASIS-WERT (Primary) */
+  --color-blue-600: #2f54bc; /* Dunkler / Hover-Zustand */
+  --color-blue-700: #1f3d96; /* Tiefblau / Kontrast-Text */
+
+  --color-red-600: #c62828;
+  --color-red-500: #b3261e;
+  --color-green-600: #2e7d32;
+  --color-orange-600: #ef6c00;
+
+  /* Typography */
+  --font-family-base: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-md: 13px;
+  --font-size-lg: 14px;
+  --font-size-xl: 16px;
+
+  /* Typography – Weight */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.4;
+
+  /* Control Heights */
+  --control-height-sm: 28px;
+  --control-height-md: 32px;
+  --control-height-lg: 36px;
+
+  /* Radius */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+
+  /* Border */
+  --border-width: 1px;
+
+  /* Z-Index (roh) */
+  --z-overlay: 9000;
+  --z-modal: 9010;
+  --z-toast: 9999;
+}

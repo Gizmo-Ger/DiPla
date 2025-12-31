@@ -1,0 +1,930 @@
+/* ==========================================================
+   SETTINGS MODAL – BASELINE v2.0
+   Einheitliche Nomenklatur: #sm-modal, .sm-*, #sm-backdrop
+   Keine logischen Änderungen – nur Darstellung/Struktur
+   ========================================================== */
+
+:root {
+  --sm-label-width: 140px;
+  --sm-gap: 6px;
+}
+
+/* ----------------------------------------------------------
+   BACKDROP
+   ---------------------------------------------------------- */
+#sm-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(3px);
+  z-index: 9000;
+  opacity: 0;
+  transition: opacity 0.18s ease-out;
+}
+
+#sm-backdrop.visible {
+  opacity: 1;
+}
+
+/* ----------------------------------------------------------
+   MODAL ROOT
+   ---------------------------------------------------------- */
+#sm-modal {
+  position: fixed;
+  z-index: 9010;
+  width: 900px;
+  height: 650px;
+  min-width: 600px;
+  min-height: 400px;
+  max-width: 95vw;
+  max-height: 95vh;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: scale(0.97);
+  transition:
+    opacity 0.18s ease-out,
+    transform 0.18s ease-out;
+}
+
+#sm-modal.hidden {
+  display: none;
+}
+
+#sm-modal.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ----------------------------------------------------------
+   SCROLLING (nur Inhalt)
+   ---------------------------------------------------------- */
+#sm-modal {
+  overflow: hidden;
+}
+
+.sm-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sm-panel {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ----------------------------------------------------------
+   DIALOG-CONTAINER
+   ---------------------------------------------------------- */
+.sm-dialog {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+/* ----------------------------------------------------------
+   HEADER / DRAG-HANDLE
+   ---------------------------------------------------------- */
+.sm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px 12px;
+  background: #f5f5f7;
+  border-bottom: 1px solid var(--border-light);
+
+  cursor: move;
+  user-select: none;
+}
+
+.sm-header h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.sm-close-btn {
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  padding: 0 4px;
+  cursor: pointer;
+}
+
+/* ----------------------------------------------------------
+   TAB-LEISTE
+   ---------------------------------------------------------- */
+.sm-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border-light);
+  background: #ffffff;
+}
+
+.sm-tab-btn {
+  border: 1px solid var(--border-light);
+  background: #ffffff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.sm-tab-btn.active {
+  background: var(--accent-light);
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ----------------------------------------------------------
+   PANEL (dynamische Inhalte der Plugins)
+   ---------------------------------------------------------- */
+.sm-panel {
+  flex: 1;
+  padding: 14px;
+  overflow: auto;
+}
+
+/* ----------------------------------------------------------
+   RESIZER
+   ---------------------------------------------------------- */
+.sm-resizer {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  width: 14px;
+  height: 14px;
+  cursor: se-resize;
+  background: transparent;
+}
+
+/* ----------------------------------------------------------
+   GENERISCHE INPUTS / BUTTONS
+   ---------------------------------------------------------- */
+.sm-input {
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border-light);
+  font-size: 13px;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+/* Standard Button */
+.sm-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border-light);
+  font-size: 13px;
+  cursor: pointer;
+  background: #ffffff;
+}
+
+/* Primär */
+.sm-btn-primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* Sekundär */
+.sm-btn-secondary {
+  background: #ffffff;
+  color: #000000;
+}
+
+/* Icon-Button (Gear etc.) */
+.sm-btn-icon {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid var(--border-light);
+  background: #ffffff;
+  cursor: pointer;
+}
+
+/* Add-Button */
+.sm-btn-add {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  color: #000000;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* ----------------------------------------------------------
+   STAFF – Übersicht
+   ---------------------------------------------------------- */
+.sm-staff-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sm-staff-row {
+  display: grid;
+  grid-template-columns: 1fr 80px 40px;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.sm-staff-name {
+  font-size: 14px;
+}
+
+.sm-staff-id {
+  font-size: 13px;
+  color: var(--text-light);
+}
+
+.sm-header-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sm-sort-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.4;
+}
+
+.sm-sort-btn.active {
+  opacity: 1;
+}
+
+
+/* ----------------------------------------------------------
+   STAFF – Editor
+   ---------------------------------------------------------- */
+.sm-staff-editor h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.sm-staff-editor h4 {
+  margin-top: 16px;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+/* Editor-Zeilen */
+.sm-editor-row {
+  display: grid;
+  grid-template-columns: var(--sm-label-width) 1fr;
+  align-items: center;
+  gap: var(--sm-gap);
+  margin-bottom: 6px;
+}
+
+.sm-editor-row label {
+  font-size: 13px;
+  text-align: left;
+}
+
+.sm-editor-row input,
+.sm-editor-row select,
+.sm-editor-row textarea {
+  width: 100%;
+}
+
+.sm-editor-row input[type='checkbox'] {
+  width: auto;
+  margin: 0;
+  justify-self: flex-start;
+}
+
+/* Rollen-Checkboxen */
+.sm-role-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin-bottom: 6px;
+}
+
+.sm-role-check {
+  font-size: 13px;
+}
+
+/* SHIFT-GRID */
+.sm-shift-grid {
+  margin-top: 8px;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: 8px;
+
+  display: grid;
+  grid-template-columns: 90px repeat(6, 1fr);
+  gap: 4px 6px;
+  font-size: 13px;
+}
+
+.sm-shift-grid-header {
+  font-weight: 600;
+  text-align: center;
+}
+
+.sm-shift-week {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.sm-shift-input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Buttons unten */
+.sm-editor-buttons {
+  margin-top: 18px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* ----------------------------------------------------------
+   ROLLEN – Tabelle
+   ---------------------------------------------------------- */
+.sm-role-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.sm-role-table td {
+  padding: 3px 0;
+  vertical-align: middle;
+}
+
+.sm-role-col-name {
+  width: auto;
+  padding-right: 16px;
+  font-size: 14px;
+}
+
+.sm-role-col-color {
+  width: 30px;
+}
+
+.sm-role-col-add {
+  width: 40px;
+}
+
+.sm-color-box {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sm-color-input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ----------------------------------------------------------
+   ABSENCE – Tabelle & Formular
+   ---------------------------------------------------------- */
+
+.sm-abs-root h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.sm-abs-root h4 {
+  margin-top: 16px;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+/* Liste */
+.sm-abs-list-wrapper {
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.sm-abs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.sm-abs-table thead {
+  background: #f5f5f7;
+}
+
+.sm-abs-table th,
+.sm-abs-table td {
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--border-light);
+  text-align: left;
+}
+
+.sm-abs-table th:last-child,
+.sm-abs-table td:last-child {
+  text-align: right;
+}
+
+.sm-abs-empty {
+  text-align: center;
+  color: var(--text-light);
+  padding: 8px 4px;
+}
+
+.sm-abs-col-staff {
+  min-width: 180px;
+}
+
+.sm-abs-col-type {
+  width: 110px;
+}
+
+.sm-abs-col-date {
+  width: 110px;
+}
+
+.sm-abs-col-actions {
+  width: 70px;
+  white-space: nowrap;
+}
+
+/* Formular */
+.sm-abs-form {
+  margin-top: 8px;
+}
+
+/* Teamsitzung: Checkbox links bündig */
+#sm-team-enabled {
+  margin-left: 0;
+}
+
+/* Label + Checkbox in editor-row korrekt ausrichten */
+.sm-editor-row > label[for='sm-team-enabled'] {
+  width: 120px; /* identisch wie alle anderen Labels */
+  display: inline-block;
+}
+.sm-team-enabled-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+/* ----------------------------------------------------------
+   Teamsitzungen – Layout-Anpassung auf Basis .sm-staff-row
+   ---------------------------------------------------------- */
+
+.tm-row {
+  grid-template-columns: 140px 1fr 80px; /* Datum | Text | Aktionen */
+  align-items: center;
+}
+
+.tm-col-date {
+  font-size: 14px;
+}
+
+.tm-col-text {
+  font-size: 13px;
+  color: var(--text-light);
+}
+
+.tm-col-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+/* ================================================
+   UNIFIED TIME INPUT LAYOUT FOR MEETING MODULES
+   ================================================ */
+
+.sm-time-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.sm-time-row label {
+  width: 70px;
+  font-weight: 500;
+}
+
+.sm-time-input {
+  width: 120px !important; /* Vorgabe Sven */
+}
+
+.sm-time-separator {
+  margin: 0 6px;
+  font-weight: 600;
+  position: relative;
+  top: 2px; /* minimal optische Zentrierung */
+}
+
+.sm-meeting-list td .time {
+  white-space: nowrap;
+}
+
+.sm-backup-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  font-size: 14px;
+}
+
+.sm-backup-file {
+  flex: 1;
+  font-family: monospace;
+  color: #333;
+}
+
+.sm-backup-time {
+  width: 140px;
+  color: #666;
+  font-size: 13px;
+}
+
+.sm-backup-month-block {
+  margin-bottom: 12px;
+}
+
+.sm-backup-month-label {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.sm-empty {
+  color: #777;
+  font-size: 13px;
+  padding: 4px 0;
+}
+
+.sm-error {
+  color: #b00;
+}
+
+/* ==========================================================
+   Backup Policy – Ergänzendes CSS
+   ========================================================== */
+
+.sb-root {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sb-section {
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: 12px;
+  background: #ffffff;
+}
+
+.sb-section h4 {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.sb-grid {
+  display: grid;
+  grid-template-columns: 200px 120px 1fr;
+  gap: 8px 12px;
+  align-items: center;
+}
+
+.sb-grid input[type="number"] {
+  width: 80px;
+}
+
+.sb-grid-header {
+  font-weight: 600;
+  font-size: 12px;
+  color: #555;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 6px;
+  margin-bottom: 6px;
+}
+
+.sb-retention input {
+  width: 56px;
+  margin: 0 6px;
+}
+
+.sb-action {
+  text-align: right;
+}
+
+.sb-hint {
+  font-size: 12px;
+  color: #666;
+}
+
+.sb-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-light);
+}
+
+
+/* =====================================================================
+   SETTINGS AUTH – Benutzerkonten (Modal)
+   Sticky Titel + Tabellenkopf, sauberer Scroll
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   ROOT
+   --------------------------------------------------------------------- */
+
+.sa-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden; /* wichtig: kein Doppel-Scroll */
+}
+
+/* ---------------------------------------------------------------------
+   STICKY HEADER (Titel + Tabellenkopf)
+   --------------------------------------------------------------------- */
+
+.sa-sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  background: #f5f5f7;
+  border-bottom: 1px solid var(--border-light);
+}
+
+/* Titel */
+.sa-sticky-header h3 {
+  margin: 0;
+  padding: 10px 8px 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Tabelle (nur THEAD) */
+.sa-sticky-header .sa-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.sa-sticky-header thead th {
+  padding: 6px 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+
+  background: #f5f5f7;
+  border-bottom: 1px solid var(--border-light);
+}
+
+/* ---------------------------------------------------------------------
+   SCROLL BODY (nur TBODY)
+   --------------------------------------------------------------------- */
+
+.sa-scroll-body {
+  flex: 1;
+  overflow-y: auto;
+  background: #fff;
+}
+
+/* Tabelle (nur TBODY) */
+.sa-scroll-body .sa-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.sa-scroll-body td {
+  padding: 6px 8px;
+  font-size: 13px;
+  border-bottom: 1px solid var(--border-light);
+  background: #fff;
+}
+
+.sa-scroll-body tbody tr:hover {
+  background: #fafafa;
+}
+
+/* ---------------------------------------------------------------------
+   ZELLEN & STATUS
+   --------------------------------------------------------------------- */
+
+.sa-center {
+  text-align: center;
+}
+
+.sa-pass {
+  text-align: center;
+  font-weight: 600;
+}
+
+.sa-ok {
+  color: #2e7d32; /* grün */
+  font-weight: 700;
+}
+
+.sa-bad {
+  color: #c62828; /* rot */
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------------------
+   LOADING / EMPTY
+   --------------------------------------------------------------------- */
+
+.sa-loading,
+.sa-empty {
+  text-align: center;
+  color: #777;
+  padding: 12px;
+}
+
+/* ---------------------------------------------------------------------
+   BUTTONS (Reset)
+   --------------------------------------------------------------------- */
+
+.sa-reset-btn {
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+.sa-reset-btn[disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ---------------------------------------------------------------------
+   FEHLERBOX
+   --------------------------------------------------------------------- */
+
+#sa-error {
+  margin: 6px 8px;
+}
+
+/* ======================================================================
+   LOGIC SETTINGS (NEW ENGINE)
+   ====================================================================== */
+
+.settings-logic .logic-rule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.settings-logic .logic-rule {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px 14px;
+  background: #fafafa;
+}
+
+/* ----------------------------------------------------------------------
+   HEADER
+   ---------------------------------------------------------------------- */
+
+.settings-logic .logic-rule-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.settings-logic .logic-rule-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #222;
+}
+
+.settings-logic .logic-rule-toggle input {
+  margin: 0;
+}
+
+.settings-logic .logic-rule-name {
+  font-weight: 500;
+}
+
+/* Pflicht-Badge */
+.settings-logic .logic-badge {
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #e53935;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+/* ----------------------------------------------------------------------
+   PARAMETER
+   ---------------------------------------------------------------------- */
+
+.settings-logic .logic-rule-params {
+  margin-top: 10px;
+  padding-left: 26px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+}
+
+.settings-logic .logic-param {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #333;
+}
+
+.settings-logic .logic-param-label {
+  white-space: nowrap;
+}
+
+.settings-logic .logic-param input[type='number'],
+.settings-logic .logic-param input[type='text'] {
+  width: 80px;
+  padding: 4px 6px;
+  font-size: 13px;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+}
+
+/* ======================================================================
+   TOOLTIP (pure CSS, unverändert nutzbar)
+   ====================================================================== */
+
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 0;
+  top: 100%;
+  margin-top: 6px;
+
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 1.4;
+
+  white-space: normal;
+  width: max-content;
+  max-width: 320px;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+
+  z-index: 2000;
+}
+
+[data-tooltip]:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}

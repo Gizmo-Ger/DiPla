@@ -1,0 +1,179 @@
+/* ==========================================================
+   COMPONENT: BUTTONS
+   ========================================================== */
+
+/* ==========================================================
+   DEBUG: Neue UI sichtbar machen
+   NUR während der Migration
+   ========================================================== */
+
+/* .ui-btn {
+  outline: 2px solid magenta !important;
+  outline-offset: -2px;
+} */
+
+.ui-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: var(--control-height-md);
+  padding-inline: var(--space-lg);
+
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+
+  border-radius: var(--radius-sm);
+  border: var(--border-width) solid var(--border-default);
+
+  background: var(--bg-surface);
+  color: var(--text-primary);
+
+  cursor: pointer;
+}
+
+.ui-btn:disabled {
+  opacity: var(--opacity-disabled);
+  cursor: not-allowed;
+}
+
+.ui-btn-primary {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: var(--text-inverse);
+}
+
+.ui-btn-primary:hover:not(:disabled) {
+  background: var(--accent-primary-hover);
+  border-color: var(--accent-primary-hover);
+  color: var(--on-accent-primary);
+}
+
+
+.ui-btn-secondary {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+.ui-btn-secondary:hover {
+  background: var(--bg-panel);
+}
+
+/* Base Button */
+.sm-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 32px;
+  padding: 0 var(--space-lg);
+
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-md);
+
+  border-radius: var(--radius-sm);
+  border: var(--border-width) solid var(--border-light);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+
+  cursor: pointer;
+  user-select: none;
+
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+.sm-btn:hover:not(:disabled) {
+  background: var(--color-gray-200);
+}
+
+.sm-btn:disabled {
+  opacity: var(--opacity-disabled);
+  cursor: not-allowed;
+}
+
+/* ----------------------------------------------------------
+   Primary
+   ---------------------------------------------------------- */
+
+.sm-btn-primary {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: var(--text-inverse);
+}
+
+.sm-btn-primary:hover:not(:disabled) {
+  background: color-mix(
+    in srgb,
+    var(--accent-primary) 90%,
+    black 10%
+  );
+}
+
+/* ----------------------------------------------------------
+   Secondary
+   ---------------------------------------------------------- */
+
+.sm-btn-secondary {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+.sm-btn-secondary:hover:not(:disabled) {
+  background: var(--color-gray-200);
+}
+
+/* ----------------------------------------------------------
+   Danger
+   ---------------------------------------------------------- */
+
+.sm-btn-danger {
+  background: var(--status-danger);
+  border-color: var(--status-danger);
+  color: var(--text-inverse);
+}
+
+.sm-btn-danger:hover:not(:disabled) {
+  background: color-mix(
+    in srgb,
+    var(--status-danger) 90%,
+    black 10%
+  );
+}
+
+/* ----------------------------------------------------------
+   Icon Button
+   ---------------------------------------------------------- */
+
+.sm-btn-icon {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+
+  border-radius: 999px;
+  background: var(--bg-surface);
+}
+
+.sm-btn-icon:hover:not(:disabled) {
+  background: var(--color-gray-200);
+}
+
+/* ----------------------------------------------------------
+   Add Button (+)
+   ---------------------------------------------------------- */
+
+.sm-btn-add {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+
+  font-size: 20px;
+  font-weight: 500;
+
+  background: var(--bg-surface);
+}

@@ -1,0 +1,13 @@
+/* ==========================================================
+   STATE TOKENS – interaction states
+   ========================================================== */
+
+:root {
+  --opacity-disabled: 0.45;
+  --opacity-muted: 0.7;
+
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+
+  --focus-ring-width: 2px;
+}

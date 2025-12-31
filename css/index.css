@@ -1,0 +1,29 @@
+/* ==========================================================
+   CSS ENTRYPOINT – EINZIGE LADESTELLE
+   ========================================================== */
+
+/* 1) Tokens */
+@import './tokens/base.css';
+@import './tokens/semantic.css';
+@import './tokens/spacing.css';
+@import './tokens/states.css';
+
+/* 2) Components */
+@import './components/buttons.css';
+@import './components/toast.css';
+/* @import './components/inputs.css';
+@import './components/dialogs.css';
+@import './components/tables.css';
+@import './components/layout.css'; */
+
+/* 3) Layouts */
+/* @import './layouts/app.css';
+@import './layouts/settings-modal.css';
+@import './layouts/viewer.css'; */
+
+/* 4) Utilities */
+/* @import './utilities.css'; */
+
+/* 5) Legacy (temporär!) */
+@import './legacy/streamlined.css';
+@import './legacy/settings-modal.css';

@@ -1,0 +1,36 @@
+/* ==========================================================
+   SEMANTIC TOKENS – Bedeutung
+   ========================================================== */
+
+:root {
+  /* Text */
+  --text-primary: var(--color-gray-700);
+  --text-secondary: var(--color-gray-600);
+  --text-muted: #777;
+  --text-inverse: var(--color-white);
+
+  /* Backgrounds */
+  --bg-app: var(--color-white);
+  --bg-panel: var(--color-gray-100);
+  --bg-surface: var(--color-gray-50);
+
+  /* Borders */
+  --border-default: var(--color-gray-400);
+  --border-light: var(--color-gray-300);
+
+  /* Accent */
+  --accent-primary: var(--color-blue-500);
+  --accent-primary-hover: var(--color-blue-600);
+  --accent-primary-soft: var(--color-blue-100);
+
+  /* Text on Accent */
+  --on-accent-primary: var(--color-white);
+
+  /* Status */
+  --status-success: var(--color-green-600);
+  --status-danger: var(--color-red-600);
+  --status-warning: var(--color-orange-600);
+
+  /* Focus */
+  --focus-ring-color: var(--accent-primary);
+}

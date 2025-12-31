@@ -1,0 +1,23 @@
+/* ==========================================================
+   SPACING TOKENS
+   ========================================================== */
+
+:root {
+  --space-2xs: 2px;
+  --space-xs:  4px;
+  --space-sm:  6px;
+  --space-md:  8px;
+  --space-lg:  12px;
+  --space-xl:  16px;
+  --space-2xl: 24px;
+
+  /* Layout Defaults */
+  --gap-xs: var(--space-xs);
+  --gap-sm: var(--space-sm);
+  --gap-md: var(--space-md);
+  --gap-lg: var(--space-lg);
+
+  /* Form Layout */
+  --label-width-sm: 120px;
+  --label-width-md: 140px;
+}

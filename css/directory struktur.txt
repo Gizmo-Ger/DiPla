@@ -1,0 +1,31 @@
+/css
+│
+├─ index.css                ← EINZIGER Entry-Point (wird in HTML geladen)
+│
+├─ tokens/                  ← NUR Variablen, KEINE Selektoren
+│   │
+│   ├─ tokens.base.css      ← Farben, Fonts, Radii, Z-Index, Durations
+│   ├─ tokens.semantic.css  ← semantic aliases (primary, danger, bg-panel)
+│   ├─ tokens.spacing.css   ← Abstände, Gaps, Sizes
+│   └─ tokens.states.css    ← hover, focus, disabled tokens
+│
+├─ components/              ← ECHTE UI-Bausteine
+│   │
+│   ├─ buttons.css          ← button, .sm-btn, .bb-btn, etc.
+│   ├─ inputs.css           ← input, select, textarea
+│   ├─ dialogs.css          ← confirm, popup, modal, logic-popup
+│   ├─ tables.css
+│   └─ layout.css           ← grids, rows, toolbars
+│
+├─ layouts/                 ← Seiten / größere Bereiche
+│   │
+│   ├─ app.css              ← Header, Controls, Main Layout
+│   ├─ settings-modal.css   ← Settings-Modal (sm-*)
+│   └─ viewer.css
+│
+├─ legacy/                  ← ALTES CSS (read-only, schrittweise abbauen)
+│   │
+│   ├─ streamlined.css
+│   └─ settings-modal.old.css
+│
+└─ utilities.css            ← .hidden, .flex, .text-center (minimal!)
